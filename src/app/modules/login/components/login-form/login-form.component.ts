@@ -40,6 +40,9 @@ export class LoginFormComponent implements OnInit {
   }
 
   public submitLogin(): void {
+    this.error = false;
+    this.loading = true;
+
     const email = this.email.value;
     const password = this.password.value;
 

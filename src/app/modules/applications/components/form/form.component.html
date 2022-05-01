@@ -1,0 +1,45 @@
+<form [formGroup]="formGroup" (ngSubmit)="submitApplication()">
+  <h2>Create an application</h2>
+  <mat-form-field appearance="fill">
+    <mat-label>App name</mat-label>
+    <input type="text" matInput formControlName="name" [errorStateMatcher]="matcher" placeholder="My Example App" />
+    <mat-error *ngIf="name.hasError('required')">
+      A name is required for your app
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>App description</mat-label>
+    <textarea matInput formControlName="description" [errorStateMatcher]="matcher" placeholder="A description of what your app does"></textarea>
+    <mat-error *ngIf="description.hasError('required')">
+      A description is required for your app
+    </mat-error>
+    <mat-hint>
+      A brief description of what your app is and what it does, this will be visible on the OAuth prompt the user sees
+    </mat-hint>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>App URL</mat-label>
+    <input type="url" matInput formControlName="homepage" [errorStateMatcher]="matcher" placeholder="https://example.com" />
+    <mat-error *ngIf="homepage.hasError('required')">
+      A URL is required for your app
+    </mat-error>
+    <mat-hint>
+      A URL where users can go to read more about your application - prefix must be specified (http/https)
+    </mat-hint>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Redirect URL</mat-label>
+    <input type="url" matInput formControlName="redirect" [errorStateMatcher]="matcher" placeholder="https://example.com/oauth" />
+    <mat-error *ngIf="redirect.hasError('required')">
+      A redirect URL is required for your app
+    </mat-error>
+    <mat-hint>
+      The URL users will be redirected to after authorising access to their account - prefix must be specified (http/https)
+    </mat-hint>
+  </mat-form-field>
+  <button type="submit"
+          mat-raised-button color="primary"
+          [disabled]="formGroup.invalid || loading">
+    Create app
+  </button>
+</form>

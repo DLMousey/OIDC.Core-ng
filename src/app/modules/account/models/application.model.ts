@@ -4,5 +4,5 @@ export default interface Application {
   description: string;
   homepageUrl: string;
   redirectUrl: string;
-  firstParty: true;
+  firstParty: boolean;
 }
