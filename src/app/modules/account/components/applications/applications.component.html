@@ -1,0 +1,21 @@
+<pre>{{ applications | json }}</pre>
+<mat-grid-list cols="4">
+  <mat-grid-tile *ngFor="let app of applications">
+    <mat-card>
+      <mat-card-title>{{ app.name }}</mat-card-title>
+      <mat-card-content>{{ app.description }}</mat-card-content>
+      <mat-card-actions>
+        <a mat-raised-button color="primary" [href]="app.homepageUrl">App Homepage</a>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card>
+      <mat-card-title>New App</mat-card-title>
+      <mat-card-content>Create a new app</mat-card-content>
+      <mat-card-actions>
+        <a mat-raised-button color="warn" [routerLink]="['/applications/create']">Create App</a>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
