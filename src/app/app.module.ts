@@ -13,6 +13,7 @@ import { AccountModule } from "./modules/account/account.module";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatListModule } from "@angular/material/list";
 import { ApplicationsModule } from "./modules/applications/applications.module";
+import { OauthModule } from "./modules/oauth/oauth.module";
 
 @NgModule({
   declarations: [
@@ -25,12 +26,13 @@ import { ApplicationsModule } from "./modules/applications/applications.module";
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
+    MatSidenavModule,
+    MatListModule,
     RegistrationModule,
     LoginModule,
     AccountModule,
     ApplicationsModule,
-    MatSidenavModule,
-    MatListModule
+    OauthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,54 @@
+<mat-card>
+  <mat-card-title>An application is requesting access to your account</mat-card-title>
+  <mat-card-subtitle>About the app</mat-card-subtitle>
+  <mat-card-content>
+    <mat-list dense>
+      <mat-list-item>
+        <mat-icon matListIcon>badge</mat-icon>
+        <span matLine>
+          <b matLine>Name:</b>
+          {{ prompt.application.name }}
+        </span>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon matListIcon>description</mat-icon>
+        <span matLine>
+          <b matLine>Description</b>
+          {{ prompt.application.description }}
+        </span>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon matListIcon>verified</mat-icon>
+        <span matLine>
+          <b matLine>Built by OIDC.Core?</b>
+          {{ prompt.application.firstParty ? "Yes" : "No" }}
+        </span>
+      </mat-list-item>
+    </mat-list>
+    <mat-divider></mat-divider>
+    <mat-list dense>
+      <mat-list-item>
+        <b>{{ prompt.application.name }} is requesting the following permissions:</b>
+      </mat-list-item>
+      <mat-list-item *ngFor="let scope of prompt.scopes">
+        <mat-icon matListIcon>{{ scope.dangerous ? "warning" : "rule" }}</mat-icon>
+        <span matLine>
+          <b matLine>{{ scope.label }}</b>
+          {{ scope.description }}
+        </span>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="accent">Deny access</button>
+    <button mat-raised-button color="primary">Allow access</button>
+  </mat-card-actions>
+</mat-card>
+<!--<h2>An application is requesting access to your account</h2>-->
+<!--The application is identifying itself as <b>{{ prompt.application.name }}</b><br>-->
+<!--It was <b *ngIf="!prompt.application.firstParty">not</b> built by OIDC.Core<br>-->
+
+<!--<mat-divider></mat-divider>-->
+<!--If you did not click something to get here, or you do not recognise the application - <b>do not allow access</b>-->
+<!--<mat-divider></mat-divider>-->
+<!--If you believe this may be malicious - send an email to blah blah blah-->

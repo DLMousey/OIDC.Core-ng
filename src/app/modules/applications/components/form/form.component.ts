@@ -4,6 +4,7 @@ import { ErrorStateMatcher } from "@angular/material/core";
 import { ApplicationData, ApplicationsService } from "../../services/applications.service";
 import { FormDialogComponent } from "../form-dialog/form-dialog.component";
 import { MatDialog } from "@angular/material/dialog";
+import { Router } from "@angular/router";
 
 export class ApplicationFormStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -26,6 +27,7 @@ export class FormComponent implements OnInit {
 
   constructor(
     private applicationsService: ApplicationsService,
+    private router: Router,
     private dialog: MatDialog
   ) {
     this.formGroup = new FormGroup({
@@ -61,7 +63,7 @@ export class FormComponent implements OnInit {
       data
     });
 
-    ref.afterClosed().subscribe((result: any) => console.log(result));
+    ref.afterClosed().subscribe((result: any) => this.router.navigate(['/applications']));
   }
 
   public get name(): AbstractControl {
